@@ -33,7 +33,7 @@ const { settingContacts, contacts } = useUser();
     if (savedContacts) {
       settingContacts(parsedContacts);
     }
-  });
+  }, []);
 
    useEffect(() => {
      localStorage.setItem('contacts', JSON.stringify(contacts));
