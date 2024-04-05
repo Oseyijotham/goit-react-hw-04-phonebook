@@ -21,23 +21,21 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 
-
-
 export const App = () => {
-
-const { settingContacts, contacts } = useUser();
+  const { settingContacts, contacts } = useUser();
 
   useEffect(() => {
-    const savedContacts = localStorage.getItem('contacts');
+    const savedContacts = localStorage.getItem('store');
     const parsedContacts = JSON.parse(savedContacts);
     if (savedContacts) {
       settingContacts(parsedContacts);
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-   useEffect(() => {
-     localStorage.setItem('contacts', JSON.stringify(contacts));
-   }, [contacts]);
+  useEffect(() => {
+    localStorage.setItem('store', JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <div
@@ -52,7 +50,7 @@ const { settingContacts, contacts } = useUser();
     >
       <ContactForm>
         <ContactList>
-          <Filter/>
+          <Filter />
         </ContactList>
       </ContactForm>
     </div>

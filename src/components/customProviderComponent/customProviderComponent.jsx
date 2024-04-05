@@ -9,7 +9,10 @@ export const UserProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [id, setId] = useState("");
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem('store');
+    return savedContacts ? JSON.parse(savedContacts) : [];
+  });
   const [filter, setFilter] = useState("");
   const [filteredArray, setFilteredArray] = useState([]);
     
@@ -69,7 +72,7 @@ export const UserProvider = ({ children }) => {
            
            //contacts.push({ id, name, number });
            setContacts([...contacts, { id, name, number }]);
-
+           
          
          return;
        } else {
@@ -84,6 +87,7 @@ export const UserProvider = ({ children }) => {
         setName('');
         setNumber('');
         setId('');
+        console.log(contacts);
     };
 
    const handleSearch = evt => {
