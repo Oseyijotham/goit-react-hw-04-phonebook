@@ -11,7 +11,10 @@ export const UserProvider = ({ children }) => {
   const [id, setId] = useState("");
   const [contacts, setContacts] = useState(() => {
     const savedContacts = localStorage.getItem('store');
-    return savedContacts ? JSON.parse(savedContacts) : [];
+    return savedContacts
+      ? JSON.parse(savedContacts)
+      : []; /* If there is data in the localStorage property "store", then return 
+    JSON.parse(savedContacts) as the value of the contacts state or else return an empty array as the value of the contacts state */
   });
   const [filter, setFilter] = useState("");
   const [filteredArray, setFilteredArray] = useState([]);
