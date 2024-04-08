@@ -15,7 +15,8 @@ export const ContactForm = ({children}) => {
     settingName,
     settingNumber,
     handleButtonPress,
-    handleSubmit
+    handleSubmit,
+    myRef
   } = useUser();
   
 
@@ -37,6 +38,7 @@ export const ContactForm = ({children}) => {
             id={contactNameId}
             autoComplete="off"
             className={css.formInput}
+            ref={myRef}
           />
         </label>
         <label>

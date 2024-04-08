@@ -1,5 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { nanoid } from 'nanoid';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 const UserContext = createContext();
 
@@ -12,6 +14,9 @@ export const UserProvider = ({ children }) => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState("");
   const [filteredArray, setFilteredArray] = useState([]);
+  const myRef = useRef();
+
+  useEffect(() => myRef.current.focus(), []);
     
   const settingId = () => {
       const uniqueId = nanoid();
@@ -126,6 +131,7 @@ export const UserProvider = ({ children }) => {
         number,
         contacts,
         filter,
+        myRef,
         settingId,
         settingName,
         settingNumber,
