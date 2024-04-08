@@ -16,7 +16,7 @@ export const UserProvider = ({ children }) => {
   const [filteredArray, setFilteredArray] = useState([]);
   const myRef = useRef();
 
-  useEffect(() => myRef.current.focus(), []); // I used  myRef to focus on the Name Input Box, see in the ContactForm component
+  useEffect(() => myRef.current.focus(), []); // I used  myRef to focus on the Name Input Box after mounting, see in the ContactForm component
     
   const settingId = () => {
       const uniqueId = nanoid();
